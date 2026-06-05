@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MineCraft Сервер | Главная</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">CubeWorld</div>
+            <nav>
+                <button class="tab-btn active" onclick="openTab(event, 'main-tab')">Главная</button>
+                <button class="tab-btn" onclick="openTab(event, 'about-tab')">О сервере</button>
+                <button class="tab-btn" onclick="openTab(event, 'rules-tab')">Правила</button>
+                <button class="tab-btn" onclick="openTab(event, 'connect-tab')">Как начать играть</button>
+            </nav>
+        </div>
+    </header>
+
+    <div id="main-tab" class="tab-content active">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Добро пожаловать на CubeWorld!</h1>
+                <p>Уникальное выживание, отзывычивая администрация и верные друзья уже ждут тебя.</p>
+                <div class="ip-box" id="ip-button">
+                    IP: <span id="ip-text">mc.my-server.ru</span>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="about-tab" class="tab-content">
+        <section class="section">
+            <div class="container">
+                <h2>О нашем сервере</h2>
+                <div class="features">
+                    <div class="card">
+                        <h3>Ванильное выживание</h3>
+                        <p>Никаких лишних плагинов, ломающих экономику. Только классический Майнкрафт с небольшими улучшениями.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Мощный хостинг</h3>
+                        <p>ТПС всегда 20! Играй без лагов и задержек в любое время суток.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Честная игра</h3>
+                        <p>У нас нет продажной админки, которая банит просто так. Все игроки равны.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="rules-tab" class="tab-content">
+        <section class="section bg-light">
+            <div class="container">
+                <h2>Правила сервера</h2>
+                <ol class="rules-list">
+                    <li><strong>Общее поведение:</strong> Уважайте других игроков. Запрещены оскорбления, флуд и спам в чате.</li>
+                    <li><strong>Игровой процесс:</strong> Запрещено использование читов (X-Ray, Fly, KillAura и др.), багоюз и модификации, дающие преимущество.</li>
+                    <li><strong>Гриферство:</strong> Запрещено разрушать чужие постройки, воровать вещи из незаприваченных сундуков и портить ландшафт вокруг чужих баз.</li>
+                    <li><strong>Администрация:</strong> Решения администрации являются окончательными. Обжаловать бан можно в нашем Дискорде.</li>
+                </ol>
+            </div>
+        </section>
+    </div>
+
+    <div id="connect-tab" class="tab-content">
+        <section class="section">
+            <div class="container text-center">
+                <h2>Как начать играть?</h2>
+                <div class="connect-steps">
+                    <p>1. Запустите Майнкрафт версии <strong>1.20.x</strong> (или вашей версии).</p>
+                    <p>2. Выберите «Сетевая игра» -> «По адресу».</p>
+                    <p>3. Введите адрес: <strong>mc.my-server.ru</strong></p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 CubeWorld. Все права защищены. Не аффилировано с Mojang Studios.</p>
+    </footer>
+
+    <script>
+        // Функция переключения вкладок
+        function openTab(evt, tabId) {
+            // Скрываем весь контент вкладок
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            // Убираем класс active у всех кнопок в меню
+            const tabButtons = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+
+            // Показываем текущую вкладку и добавляем класс active кнопке
+            document.getElementById(tabId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Функция копирования IP
+        document.getElementById('ip-button').addEventListener('click', function() {
+            const ipText = document.getElementById('ip-text').innerText;
+            
+            navigator.clipboard.writeText(ipText).then(() => {
+                const button = document.getElementById('ip-button');
+                button.innerHTML = 'Скопировано!';
+                button.style.background = '#00ff66';
+                
+                setTimeout(() => {
+                    button.innerHTML = `IP: <span id="ip-text">${ipText}</span>`;
+                    button.style.background = '#ffaa00';
+                }, 1500);
+            }).catch(err => {
+                console.error('Не удалось скопировать: ', err);
+            });
+        });
+    </script>
+
+</body>
+</html>
