@@ -87,7 +87,7 @@ nav {
 
 /* Главный баннер (Вкладка Главная) */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1607988795691-3d0147b43231?q=80&w=1920') no-repeat center center/cover;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://reallyworld.me/images/bg1.webp') no-repeat center center/cover;
     height: calc(100vh - 73px); /* На всю высоту экрана за вычетом шапки */
     display: flex;
     align-items: center;
